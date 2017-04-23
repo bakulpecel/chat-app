@@ -1,0 +1,5 @@
+vendor/*
+phinx.yml
+composer.lock
+.env
+mysql_directory/*

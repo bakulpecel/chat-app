@@ -82,7 +82,7 @@ class UserController extends Controller
                     'password'  => password_hash($request->getParam('password'), PASSWORD_DEFAULT)
                 ]);
 
-                $data['status']  = 200;
+                $data['status']  = 201;
                 $data['message'] = 'Registration successfull';
             } else {
                 $data['status']  = 400;

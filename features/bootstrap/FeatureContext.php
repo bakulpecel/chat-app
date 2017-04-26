@@ -51,10 +51,26 @@ class FeatureContext implements Context
     }
 
     /**
+     * @When I get url :url
+     */
+    public function iGetUrl($url)
+    {
+        $request = $this->client->get($url, [
+            'headers' => [
+                'Authorization' => $this->token,
+            ]
+        ])->getBody();
+
+        $responseBody = json_decode($request->getContents());
+
+        $this->response['status_code'] = $responseBody->status;
+    }
+
+    /**
      * @Then I get response code :status_code
      */
     public function iGetResponseCode($status_code)
-    {   
+    {
         if (!($this->response->getStatusCode() == $status_code)) {
             echo "Invalid Response Code (" . $status_code . ")"; 
             exit();
